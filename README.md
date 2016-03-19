@@ -25,10 +25,6 @@ The following **optional** features are implemented:
 - [ ] Tapping on a post's username or profile photo goes to that user's profile page
 
 
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1. More ui designing
-2. Using more advanced features of parse
 
 ## Video Walkthrough 
 
