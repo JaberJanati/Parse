@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class ImageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var posts: [ImageCollection]!
+    @IBOutlet weak var tableView: UITableView!
+    var images: [PFObject]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getParseData()
+        tableView.delegate = self
+        tableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -23,23 +30,44 @@ class ImageViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if posts == nil {
+        if images == nil {
             return 0
         }
         else {
-            return posts.count
+            return images!.count
         }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ImageCell", forIndexPath: indexPath) as! ImageCell
-        cell.post = posts[indexPath.row]
+        cell.post = images![indexPath.row]
         
         return cell
     }
     
     @IBAction func onBackButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    
+    func getParseData() {
+        let query = PFQuery(className: "ImageCollection")
+        query.orderByDescending("createdAt")
+        query.includeKey("author")
+        query.limit = 20
+        
+        print("RAN PARSE DATA")
+        query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+           if let posts = posts {
+                print(posts)
+                self.images = posts
+                self.tableView.reloadData()
+                print("Posted!")
+           } else {
+                print(error?.localizedDescription)
+            }
+        }
+        
     }
     /*
     // MARK: - Navigation

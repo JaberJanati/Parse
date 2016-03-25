@@ -17,13 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
         Parse.initializeWithConfiguration(
             ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
-                configuration.applicationId = "week6App"
+                configuration.applicationId = "myAppId"
                 configuration.clientKey = "nil"  // set to nil assuming you have not set clientKey
-                configuration.server = "https://week6App.herokuapp.com/parse"
+                configuration.server = "nil"
             })
-            )
+        )
+        
+        if PFUser.currentUser() != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle:  nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("capturePhoto")
+            window?.rootViewController = vc
+        }
         return true
     }
 

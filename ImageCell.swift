@@ -7,26 +7,31 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
-class ImageCell: UITableViewCell {
-    @IBOutlet weak var imageLabel: UIImageView!
+class ImageCell: PFTableViewCell {
+   
     @IBOutlet weak var captionLabel: UILabel!
 
+    @IBOutlet weak var imageLabel: PFImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    var post: ImageCollection! {
+    var post: PFObject! {
         didSet {
-            imageLabel = post.image as? UIImageView
-            captionLabel.text = post.caption
+                imageLabel.file = post["media"] as? PFFile
+                imageLabel.loadInBackground()
+                captionLabel.text = post["caption"] as? String
+            }
         }
-    }
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
+//    override func setSelected(selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
 
 }

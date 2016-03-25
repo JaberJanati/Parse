@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onSignIn(sender: AnyObject) {
+       
+        
         PFUser.logInWithUsernameInBackground(userName.text!, password: passwordField.text!) { (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 print("you logged in")
@@ -39,6 +41,7 @@ class LoginViewController: UIViewController {
         let newUser = PFUser()
         newUser.username = userName.text
         newUser.password = passwordField.text
+        print("Username: \(userName.text) \n Password: \(passwordField.text)")
         
         newUser.signUpInBackgroundWithBlock{(success: Bool, error: NSError?) -> Void in
             if success {

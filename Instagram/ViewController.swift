@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    var imageCollection: [ImageCollection]!
+    var imageCollection: ImageCollection!
     @IBOutlet weak var captionLabel: UITextField!
     var photoImageView = UIImageView(frame: CGRectMake(40, 120, 200, 200))
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(photoImageView)
-        self.imageCollection = nil
         captionLabel.text = "Caption"
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -37,32 +40,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         photoImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-    
+        
+        let editedImage = ImageCollection.resize(photoImageView.image!, newSize: CGSize(width: 250, height: 250))
+        photoImageView.image = editedImage
+        
         dismissViewControllerAnimated(false, completion: nil)
         
         
     }
-    @IBAction func onSubmit(sender: AnyObject) {
-        let data = ImageCollection(str: captionLabel.text!, img: photoImageView.image! as! UIImage)
-        
-        
-        imageCollection.append(data)
-        self.performSegueWithIdentifier("collectionSegue", sender: nil)
-    }
+   @IBAction func onSubmit(sender: AnyObject) {
+        ImageCollection.postUserImage(photoImageView.image, withCaption: captionLabel.text!){(success: Bool, error: NSError?) -> Void in
+            if success {
+                print("succedded")
+                self.photoImageView.image = nil
+                self.captionLabel.text = nil
+            } else {
+                print("error: \(error?.localizedDescription)")
+            }
     
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "collectionSegue") {
-            var svc = segue.destinationViewController as! ImageViewController
-            svc.posts = imageCollection
         }
-        
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
     }
+    
+    
+//    // MARK: - Navigation
+//    
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if(segue.identifier == "collectionSegue") {
+//            var svc = segue.destinationViewController as! ImageViewController
+//            svc.posts = imageCollection
+//        }
+//        
+//    // Get the new view controller using segue.destinationViewController.
+//    // Pass the selected object to the new view controller.
+//    }
 
 
    
