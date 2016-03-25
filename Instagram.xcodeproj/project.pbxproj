@@ -12,6 +12,9 @@
 		606424161C9E007400A2C4EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606424141C9E007400A2C4EA /* Main.storyboard */; };
 		606424181C9E007400A2C4EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606424171C9E007400A2C4EA /* Assets.xcassets */; };
 		6064241B1C9E007400A2C4EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606424191C9E007400A2C4EA /* LaunchScreen.storyboard */; };
+		60AB47C31CA4BAD400CEEB77 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AB47C21CA4BAD400CEEB77 /* ImageCell.swift */; };
+		60AB47C51CA4BBC100CEEB77 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AB47C41CA4BBC100CEEB77 /* ImageViewController.swift */; };
+		60AB47C71CA4BCA600CEEB77 /* ImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AB47C61CA4BCA600CEEB77 /* ImageCollection.swift */; };
 		60B8BB021C9E03360081ED3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8BB011C9E03360081ED3F /* LoginViewController.swift */; };
 		F72D2A81161C2DB9ECB20DFB /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA9AF547760303F7B5E778CB /* Pods_Instagram.framework */; };
 /* End PBXBuildFile section */
@@ -25,6 +28,9 @@
 		606424171C9E007400A2C4EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6064241A1C9E007400A2C4EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6064241C1C9E007400A2C4EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60AB47C21CA4BAD400CEEB77 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = SOURCE_ROOT; };
+		60AB47C41CA4BBC100CEEB77 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		60AB47C61CA4BCA600CEEB77 /* ImageCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollection.swift; sourceTree = "<group>"; };
 		60B8BB011C9E03360081ED3F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BA9AF547760303F7B5E778CB /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1C19FF46CCCFCD2AC1267F /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 		6064240F1C9E007400A2C4EA /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				60AB47C11CA4BA9C00CEEB77 /* Models */,
 				60B8BB001C9E03280081ED3F /* viewcontroller */,
 				606424101C9E007400A2C4EA /* AppDelegate.swift */,
 				606424121C9E007400A2C4EA /* ViewController.swift */,
@@ -82,10 +89,20 @@
 			path = Instagram;
 			sourceTree = "<group>";
 		};
+		60AB47C11CA4BA9C00CEEB77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				60AB47C21CA4BAD400CEEB77 /* ImageCell.swift */,
+				60AB47C61CA4BCA600CEEB77 /* ImageCollection.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		60B8BB001C9E03280081ED3F /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
 				60B8BB011C9E03360081ED3F /* LoginViewController.swift */,
+				60AB47C41CA4BBC100CEEB77 /* ImageViewController.swift */,
 			);
 			name = viewcontroller;
 			sourceTree = "<group>";
@@ -222,6 +239,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				60B8BB021C9E03360081ED3F /* LoginViewController.swift in Sources */,
+				60AB47C71CA4BCA600CEEB77 /* ImageCollection.swift in Sources */,
+				60AB47C31CA4BAD400CEEB77 /* ImageCell.swift in Sources */,
+				60AB47C51CA4BBC100CEEB77 /* ImageViewController.swift in Sources */,
 				606424131C9E007400A2C4EA /* ViewController.swift in Sources */,
 				606424111C9E007400A2C4EA /* AppDelegate.swift in Sources */,
 			);
