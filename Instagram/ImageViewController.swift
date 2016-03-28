@@ -29,6 +29,12 @@ class ImageViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onLogOut(sender: AnyObject) {
+        
+        PFUser.logOut()
+        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if images == nil {
             return 0
